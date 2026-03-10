@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electronics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2, #ff6a88);
+            min-height: 100vh;
+            color: #1f2933;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #ff512f, #f09819);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* PAGE TITLE */
+        .page-title {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #fff;
+        }
+
+        .page-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            font-size: 18px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product {
+            background: linear-gradient(135deg, #ffffff, #f3f4f6);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            color: #4b5563;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .product button {
+            background: linear-gradient(90deg, #36d1dc, #5b86e5);
+            border: none;
+            padding: 10px 22px;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            opacity: 0.9;
+        }
+
+        /* BACK BUTTON */
+        .back-home {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 60px;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            color: #fff;
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-home:hover {
+            opacity: 0.9;
+        }
+
+
+        .cart-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(90deg, #36d1dc, #5b86e5);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(20px);
+    z-index: 2000;
+}
+
+.cart-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.buy-btn {
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    border: none;
+    padding: 10px 22px;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.buy-btn:hover {
+    opacity: 0.9;
+}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MyShop</h1>
+    <a href="ecommerce.html">⬅ Back to Home</a>
+</header>
+
+<section class="page-title">
+    <h2>Electronics Products</h2>
+    <p>Latest gadgets and electronic items</p>
+</section>
+
+
+<section class="products">
+    <div class="product">
+        <img src="F:\project\img\lapt.webp" alt="Laptop">
+        <h3>ASUS TUF Gaming F16 Gaming Laptop</h3>
+        <p>₹74,999</p>
+        <button onclick="addToCart('Laptop', 74999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Laptop', 74999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\tab.webp" alt="Tablet">
+        <h3>Lenovo Idea Tab 11" WiFi Android Tablet</h3>
+        <p>₹16,999</p>
+        <button onclick="addToCart('Tablet', 16999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Tablet', 16999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\w1.png" alt="Smartwatch">
+        <h3>Fastrack MYND Smartwatch</h3>
+        <p>₹4999</p>
+        <button onclick="addToCart('Smartwatch', 4999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Smartwatch', 4999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\power.jpeg" alt="Power Bank">
+        <h3>Wearable Hidden Camera Power Bank</h3>
+        <p>₹21,990</p>
+        <button onclick="addToCart('Power Bank', 21990)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Power Bank', 21990)" class="buy-btn">Buy Now</button>
+    </div>
+
+
+    <div class="product">
+        <img src="F:\project\img\s25.webp" alt="Smartphone">
+        <h3>Samsung Galaxy S25 Ultra 5G</h3>
+        <p>₹1,22,999</p>
+        <button onclick="addToCart('Smartphone', 122999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Smartphone', 122999)" class="buy-btn">Buy Now</button>
+    </div>
+
+
+    <div class="product">
+        <img src="F:\project\img\mouse.jpeg" alt="Wireless Mouse">
+        <h3>Wireless Gaming Mouse</h3>
+        <p>₹1999</p>
+        <button onclick="addToCart('Wireless Mouse', 1999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Wireless Mouse',1999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\keybord.webp" alt="Mechanical Keyboard">
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <h3>Eisa Pro K686 Mechanical Keyboard</h3>
+        <p>₹4999</p>
+        <button onclick="addToCart('Mechanical Keyboard', 4999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Mechanical Keyboard', 4999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\speker.webp" alt="Bluetooth Speaker">
+        <h3>boAt PartyPal 600 Bluetooth Party Speaker</h3>
+        <p>₹19,999</p>
+        <button onclick="addToCart('Bluetooth Speaker', 19999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Bluetooth Speaker', 19999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\router.jpeg" alt="Home Wi-Fi Router">
+        <h3>Conbre CPE MT-300H 5G & 4G Sim based Wi-Fi Router</h3>
+        <p>₹2999</p>
+        <button onclick="addToCart('Home Wi-Fi Router', 2999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Home Wi-Fi Router', 2999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\cctv.jpeg" alt="CCTV Security Camera">
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <h3>CCTV Security Camera</h3>
+        <p>₹9999</p>
+        <button onclick="addToCart('CCTV Security Camera', 9999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('CCTV Security Camera', 9999)" class="buy-btn">Buy Now</button>
+    </div>
+
+
+
+
+    <div class="product">
+        <img src="F:\project\img\usb.jpeg" alt="USB Flash Drive">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h3>USB Flash Drive</h3>
+        <p>₹4999</p>
+        <button onclick="addToCart('USB Flash Drive', 4999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('USB Flash Drive', 4999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\hdd.jpeg" alt="External Hard Disk">
+        <h3>External Hard Disk</h3>
+        <p>₹6999</p>
+        <button onclick="addToCart('External Hard Disk', 6999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('External Hard Disk', 6999)" class="buy-btn">Buy Now</button>
+    </div>
+
+<div class="product">
+        <img src="F:\project\img\tv.webp" alt="Smart LED TV">
+        <h3>Smart LED TV</h3>
+        <p>₹45,999</p>
+        <button onclick="addToCart('Smart LED TV', 45999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Smart LED TV', 45999)" class="buy-btn">Buy Now</button>
+    </div>
+
+   <div class="product">
+        <img src="F:\project\img\headphone.webp" alt="Bluetooth Headphones">
+        <h3>Bluetooth Headphones</h3>
+        <p>₹999</p>
+        <button onclick="addToCart('Bluetooth Headphones', 2999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Bluetooth Headphones', 2999)" class="buy-btn">Buy Now</button>
+    </div>
+
+       <div class="product">
+        <img src="F:\project\img\buds.jpeg" alt="Wireless Earbuds">
+        <h3>Wireless Earbuds</h3>
+        <p>₹1599</p>
+        <button onclick="addToCart('Wireless Earbuds', 1599)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Wireless Earbuds', 1599)" class="buy-btn">Buy Now</button>
+    </div>
+</section>
+
+<a href="ecommerce.html" class="back-home">⬅ Back to Home</a>
+
+
+<!-- ADD TO CART MESSAGE -->
+<div id="cartMessage" class="cart-message">
+    Item added to cart ✅
+</div>
+
+
+
+<script>
+// ADD PRODUCT TO CART
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.qty += 1;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            qty: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showCartMessage(name);
+}
+
+
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(p => p.name === name);
+
+    if (item) {
+        item.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showCartMessage(name);
+}
+
+// BUY NOW FUNCTION
+function buyNow(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(p => p.name === name);
+
+    if (item) {
+        item.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Redirect to cart page
+    window.location.href = "cart.html";
+}
+
+// CART MESSAGE
+function showCartMessage(productName) {
+    const msg = document.getElementById("cartMessage");
+    msg.innerText = `✅ ${productName} added to cart`;
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        msg.classList.remove("show");
+    }, 2000);
+}
+
+// SHOW MESSAGE
+function showCartMessage(productName) {
+    const msg = document.getElementById("cartMessage");
+    msg.innerText = `✅ ${productName} added to cart`;
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        msg.classList.remove("show");
+    }, 2000);
+}
+
+
+
+function buyNow(productName, price) {
+    // Redirect to order page and pass product name
+    window.location.href = "order.html?product=" + encodeURIComponent(productName);
+}
+
+</script>
+
+
+</body>
+</html>

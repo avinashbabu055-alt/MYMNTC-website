@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNTC Luxury Cars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-color: gold;
+            --dark-bg: #0a0a0a;
+            --light-text: #ffffff;
+            --accent-color: #c4a777;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin-left: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Brands Section */
+        .brands {
+            padding: 80px 50px;
+        }
+
+        .brands h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 80px 50px;
+        }
+
+        .category {
+            margin-bottom: 60px;
+        }
+
+        .category h3 {
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .car-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .car-card-content {
+            padding: 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 50px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: var(--light-text);
+        }
+
+        .contact-form button {
+            padding: 15px;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            padding: 50px 50px 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .car-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .historic {
+            position: relative;
+            opacity: 0.7;
+        }
+
+        .historic::before {
+            content: "Historic";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            color: gold;
+        }
+
+        /* Option 1: Single Luxury Background with Overlay */
+        .luxury-bg {
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.7)
+            ),
+            url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Option 2: Dynamic Video Background */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .video-bg video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+
+        /* Option 3: Parallax Sections */
+        .parallax-section {
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .parallax-1 {
+            background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .parallax-2 {
+            background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494c9d8?auto=format&fit=crop&w=1920&q=80');
+        }
+
+        /* Option 4: Gradient Background with Pattern */
+        .gradient-bg {
+            background: 
+                linear-gradient(
+                    135deg,
+                    #0a0a0a 0%,
+                    #1a1a1a 100%
+                );
+            position: relative;
+        }
+
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 0h20v20H0z" fill="%23ffffff" fill-opacity="0.05"/%3E%3C/svg%3E');
+            opacity: 0.1;
+        }
+
+        /* Option 5: Animated Gradient Background */
+        .animated-bg {
+            background: linear-gradient(
+                270deg,
+                #0a0a0a,
+                #1a1a1a,
+                #2a2a2a,
+                #1a1a1a
+            );
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animations */
+        @keyframes shimmer {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        @keyframes lightTrail {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(200%) translateY(200%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Combined Luxury Background */
+        .mntc-luxury-background {
+            background-color: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        .mntc-luxury-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(
+                    135deg,
+                    rgba(255, 215, 0, 0.05) 0%,
+                    transparent 50%,
+                    rgba(255, 215, 0, 0.05) 100%
+                );
+            animation: shimmer 10s infinite linear;
+        }
+
+        /* Particle Effect Overlay */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0.5;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .skyline {
+                height: 20%;
+            }
+            
+            .light-trail {
+                width: 100px;
+            }
+        }
+
+        /* JavaScript for Dynamic Particles */
+        .car-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .car-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .car-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .car-card:hover .car-overlay {
+            opacity: 1;
+        }
+
+        .details-btn {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .details-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .car-card-content {
+            padding: 20px;
+        }
+
+        .car-brand {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .car-description {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .car-price {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">MNTC LUXURY CARS</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#brands">Our Brands</a>
+            <a href="#categories">Categories</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Experience Ultimate Luxury</h1>
+            <p>Discover the world's most prestigious automotive collection</p>
+            <a href="file:///C:/Users/malla/Desktop/apppppp/collection.html" class="cta-button">Explore Our Collection</a>
+        </div>
+        <div class="particles"></div>
+    </section>
+
+    <!-- Brands Section -->
+    <section id="brands" class="brands">
+        <h2>Featured Brands</h2>
+        <div class="brand-slider">
+            <!-- Brand logos will be added here via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <h2>Our Collections</h2>
+        
+        <!-- Mainstream Luxury -->
+        <div class="category">
+            <h3>Mainstream Luxury</h3>
+            <div class="car-grid">
+                <!-- Cars will be added here via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Ultra Luxury -->
+        <div class="category">
+            <h3>Ultra-Luxury & Exotic</h3>
+            <div class="car-grid">
+                <!-- Cars will be added here via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Niche Brands -->
+        <div class="category">
+            <h3>Niche & Emerging Brands</h3>
+            <div class="car-grid">
+                <!-- Cars will be added here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>MNTC Luxury Cars</h3>
+                <p><i class="fas fa-location-dot"></i> 123 Luxury Avenue, Beverly Hills, CA 90210</p>
+                <p><i class="fas fa-phone"></i> +1 (888) LUXURY-CARS</p>
+                <p><i class="fas fa-envelope"></i> contact@mntcluxury.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <select required>
+                    <option value="">Select Brand of Interest</option>
+                    <!-- Options will be added via JavaScript -->
+                </select>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About MNTC</h4>
+                <p>Experience luxury automotive excellence with our curated collection of the world's finest vehicles.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#brands">Brands</a>
+                <a href="#categories">Categories</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MNTC Luxury Cars. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Car Data Structure
+        const carData = {
+            luxurySedan: [
+                {
+                    name: 'Mercedes-Benz S-Class',
+                    brand: 'Mercedes-Benz',
+                    description: 'Flagship luxury sedan with cutting-edge tech and comfort',
+                    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8',
+                    price: 'Starting at $94,250'
+                },
+                {
+                    name: 'BMW 7 Series',
+                    brand: 'BMW',
+                    description: 'Luxury and sporty driving dynamics',
+                    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e',
+                    price: 'Starting at $86,800'
+                },
+                {
+                    name: 'Audi A8',
+                    brand: 'Audi',
+                    description: 'Quattro all-wheel drive and advanced tech',
+                    image: 'https://hips.hearstapps.com/hmg-prod/images/a218141-medium-1635867809.jpg?crop=0.723xw:0.811xh;0.133xw,0.127xh&resize=768:*',
+                    price: 'Starting at $86,500'
+                },
+                {
+                    name: 'Lexus LS',
+                    brand: 'Lexus',
+                    description: 'Reliability, comfort, and hybrid options',
+                    image: 'https://imgd.aeplcdn.com/664x374/cw/ec/28191/Lexus-LS-Exterior-92769.jpg?v=201711021421&q=80',
+                    price: 'Starting at $76,000'
+                },
+                {
+                    name: 'Porsche Panamera',
+                    brand: 'Porsche',
+                    description: 'Sporty luxury sedan with exceptional performance',
+                    image: 'https://cdni.autocarindia.com/ExtraImages/20240722043230_Porsche_Panamera_Turbo_S_E_Hybrid_front.jpg',
+                    price: 'Starting at $88,400'
+                }
+            ],
+            luxurySUV: [
+                {
+                    name: 'Range Rover',
+                    brand: 'Land Rover',
+                    description: 'Iconic luxury SUV with off-road capability',
+                    image: 'https://media.cdn-jaguarlandrover.com/api/v2/images/105960/w/1600/h/900.jpg',
+                    price: 'Starting at $92,000'
+                },
+                {
+                    name: 'BMW X7',
+                    brand: 'BMW',
+                    description: 'Spacious, tech-packed, and luxurious',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoCBFaKJBv2bjZtpY3qmcSs865kqjVdm-Apw&s',
+                    price: 'Starting at $74,900'
+                },
+                {
+                    name: 'Mercedes-Benz GLS',
+                    brand: 'Mercedes-Benz',
+                    description: 'Premium comfort and advanced features',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMqzOisrkkfg0V4WL1xh6sG4TlKIr8pt3HiA&s',
+                    price: 'Starting at $77,850'
+                },
+                {
+                    name: 'Audi Q8',
+                    brand: 'Audi',
+                    description: 'Sporty design and Quattro performance',
+                    image: 'https://stimg.cardekho.com/images/carexteriorimages/930x620/Audi/Q8/11087/1724325511830/front-left-side-47.jpg',
+                    price: 'Starting at $70,800'
+                },
+                {
+                    name: 'Tesla Model X',
+                    brand: 'Tesla',
+                    description: 'Electric SUV with futuristic tech and performance',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSB2Cnv5kbPW3thEz1rQv60o8w6rArPH7s4A&s',
+                    price: 'Starting at $89,990'
+                },
+                {
+                    name: 'Cadillac Escalade',
+                    brand: 'Cadillac',
+                    description: 'American luxury with bold styling',
+                    image: 'https://www.cadillac.com/content/dam/cadillac/na/us/english/index/vehicles/future-and-concept/future-vehicles/escalade-mcm/my25-escalade-mov-gallery-grid-exterior-front-grille-v2.jpg?imwidth=1200',
+                    price: 'Starting at $76,295'
+                },
+                {
+                    name: 'Genesis GV80',
+                    brand: 'Genesis',
+                    description: 'Affordable luxury with great value',
+                    image: 'https://hips.hearstapps.com/hmg-prod/images/2025-genesis-gv80-149-6642229d26dcf.jpg?crop=0.748xw:0.632xh;0.172xw,0.163xh&resize=2048:*',
+                    price: 'Starting at $49,500'
+                }
+            ],
+            luxurySports: [
+                {
+                    name: 'Porsche 911',
+                    brand: 'Porsche',
+                    description: 'Iconic sports car with timeless design and performance',
+                    image: 'https://images.unsplash.com/photo-1580274455191-1c62238fa333',
+                    price: 'Starting at $101,200'
+                },
+                {
+                    name: 'Ferrari 296 GTB',
+                    brand: 'Ferrari',
+                    description: 'Hybrid supercar with stunning performance',
+                    image: 'https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Galleries/20220419064915_99_ferrari_296_gts_2022_official_images_red_front.jpg&w=872&h=578&q=75&c=1',
+                    price: 'Starting at $322,986'
+                },
+                {
+                    name: 'Lamborghini Huracán',
+                    brand: 'Lamborghini',
+                    description: 'Exotic design and thrilling driving experience',
+                    image: 'https://imgd.aeplcdn.com/1920x1080/n/cw/ec/185153/lamborghini-huracan-evo-right-front-three-quarter7.jpeg?isig=0&wm=1&q=80&q=80',
+                    price: 'Starting at $206,295'
+                },
+                {
+                    name: 'Audi R8',
+                    brand: 'Audi',
+                    description: 'Everyday supercar with Quattro all-wheel drive',
+                    image: 'https://imgd.aeplcdn.com/664x374/cw/ec/23939/Audi-R8-Right-Front-Three-Quarter-75684.jpg?v=201711021421&wm=1&q=80',
+                    price: 'Starting at $142,700'
+                },
+                {
+                    name: 'McLaren 720S',
+                    brand: 'McLaren',
+                    description: 'Lightweight and blisteringly fast',
+                    image: 'https://www.jansatta.com/wp-content/uploads/2019/04/McLaren-small.jpg',
+                    price: 'Starting at $299,000'
+                },
+                {
+                    name: 'BMW M8',
+                    brand: 'BMW',
+                    description: 'Luxury and performance combined',
+                    image: 'https://hips.hearstapps.com/hmg-prod/images/2020-bmw-m8-competition-coupe-104-1570575778.jpg?crop=0.852xw:0.719xh;0.0570xw,0.193xh&resize=2048:*',
+                    price: 'Starting at $130,000'
+                }
+            ],
+            luxuryEV: [
+                {
+                    name: 'Tesla Model S Plaid',
+                    brand: 'Tesla',
+                    description: 'Fastest production sedan with insane acceleration',
+                    image: 'https://greencarscompare.com/upload/resize_cache/iblock/af8/1100_618_2/683f5zoi0e5wpubzns7nxn1ic7rsxp1o.png',
+                    price: 'Starting at $124,490'
+                },
+                {
+                    name: 'Porsche Taycan',
+                    brand: 'Porsche',
+                    description: 'Sporty electric sedan with Porsche DNA',
+                    image: 'https://m.economictimes.com/thumb/msid-72381958,width-1200,height-900,resizemode-4,imgsize-494910/the-taycan-is-not-the-first-electric-vehicle-to-bear-the-porsche-name-though-it-is-by-far-the-most-significant-.jpg',
+                    price: 'Starting at $82,700'
+                },
+                {
+                    name: 'Lucid Air',
+                    brand: 'Lucid',
+                    description: 'Ultra-luxury EV with exceptional range and performance',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9kPd6RAf_znkFRfcS_xe7dKm6pCdS9q5hCw&s',
+                    price: 'Starting at $87,400'
+                },
+                {
+                    name: 'Audi e-tron GT',
+                    brand: 'Audi',
+                    description: 'Stunning design and Quattro performance',
+                    image: 'https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Reviews/2%20-%202024-09-16T225742.915.png&c=0&w=700',
+                    price: 'Starting at $102,400'
+                },
+                {
+                    name: 'Mercedes-Benz EQS',
+                    brand: 'Mercedes-Benz',
+                    description: 'Flagship electric sedan with futuristic tech',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKvM_4rpa_9mVajX-bJcsWLqhoR0EUP1EL1A&s',
+                    price: 'Starting at $102,310'
+                },
+                {
+                    name: 'Rivian R1S',
+                    brand: 'Rivian',
+                    description: 'Luxury electric SUV with off-road capability',
+                    image: 'https://cdn.motor1.com/images/mgl/xqKbwP/s1/2025-rivian-r1s-first-drive.jpg',
+                    price: 'Starting at $72,500'
+                }
+            ],
+            ultraLuxury: [                {
+                    name: 'Rolls-Royce Phantom',
+                    brand: 'Rolls-Royce',
+                    description: 'The pinnacle of luxury and craftsmanship',
+                    image: 'https://f1rstmotors.com/_next/image?url=https%3A%2F%2Ff1rst-motors.s3.me-central-1.amazonaws.com%2Fcars%2F1715617522443-blob&w=3840&q=100',
+                    price: 'Starting at $455,000'
+                },
+                {
+                    name: 'Bentley Flying Spur',
+                    brand: 'Bentley',
+                    description: 'Luxury sedan with handcrafted interiors',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC6ODhuEEWn7mk1Nf6UGe5Q_0PY_mLhIK2HA&s',
+                    price: 'Starting at $196,000'
+                },
+                {
+                    name: 'Maybach S-Class',
+                    brand: 'Mercedes-Maybach',
+                    description: 'Ultra-luxurious version of the Mercedes-Benz S-Class',
+                    image: 'https://www.mercedes-benz.co.in/content/dam/hq/passengercars/cars/s-class/s-class-saloon-wv223-pi/amg/equipment/12-2022/images/mercedes-amg-s-class-wv223-amg-equipment-exterior-amgnightpackage-764x573-12-2022.jpg/1740017690019.jpg?im=Resize=(512);Crop,rect=(0,0,512,384)',
+                    price: 'Starting at $184,900'
+                },
+                {
+                    name: 'Aston Martin DB12',
+                    brand: 'Aston Martin',
+                    description: 'Grand tourer with British elegance',
+                    image: 'https://static.designboom.com/wp-content/uploads/2023/08/aston-martin-db12-volante-top-down-layered-folding-fabric-roof-designboom-05.jpg',
+                    price: 'Starting at $245,000'
+                },
+                {
+                    name: 'Bugatti Chiron',
+                    brand: 'Bugatti',
+                    description: 'Hypercar with unmatched performance and exclusivity',
+                    image: 'https://robbreport.com/wp-content/uploads/2022/12/profilee03.jpg?w=681&h=383&crop=1',
+                    price: 'Starting at $3,000,000'
+                }
+            ],
+            performance: [
+                {
+                    name: 'Porsche 911 GT3',
+                    brand: 'Porsche',
+                    description: 'Track-focused sports car',
+                    image: 'https://i.ytimg.com/vi/Hcu2fxbtoeo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAchoB3AlFzDAtB6cqdlZ7D-9m78A',
+                    price: 'Starting at $161,100'
+                },
+                {
+                    name: 'Ferrari SF90 Stradale',
+                    brand: 'Ferrari',
+                    description: 'Hybrid hypercar with insane power',
+                    image: 'https://ferrari-cdn.thron.com/delivery/public/image/ferrari/44cdeb71-3ea8-4b17-8e38-c7ca92ed6bf5/3zayf6/std/0x415/20230419_FERRARI0823_V5?quality=auto-high&format=auto',
+                    price: 'Starting at $507,300'
+                },
+                {
+                    name: 'Lamborghini Aventador',
+                    brand: 'Lamborghini',
+                    description: 'V12-powered supercar',
+                    image: 'https://hips.hearstapps.com/hmg-prod/images/2022-lamborghini-aventador-109-1625607587.jpg?crop=0.721xw:0.541xh;0.194xw,0.305xh&resize=1200:*',
+                    price: 'Starting at $417,826'
+                },
+                {
+                    name: 'BMW M5 CS',
+                    brand: 'BMW',
+                    description: 'High-performance luxury sedan',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQul6s453xK-FC3UoWhbA0VBHtiy__Gezb30w&s',
+                    price: 'Starting at $142,000'
+                },
+                {
+                    name: 'Mercedes-AMG GT',
+                    brand: 'Mercedes-AMG',
+                    description: 'Powerful and stylish sports car',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OLWiNJqpiWrLgsgyWq6EIOxlkl0Q4zEQzA&s',
+                    price: 'Starting at $118,600'
+                }
+            ],
+            valueLuxury: [
+                {
+                    name: 'Genesis G90',
+                    brand: 'Genesis',
+                    description: 'Affordable luxury with premium features',
+                    image: 'https://cdni.autocarindia.com/ExtraImages/20211130054210_600517.jpg',
+                    price: 'Starting at $74,950'
+                },
+                {
+                    name: 'Acura TLX',
+                    brand: 'Acura',
+                    description: 'Sporty and reliable luxury sedan',
+                    image: 'https://hips.hearstapps.com/hmg-prod/images/2024-acura-tlx-132-65a15c814ada9.jpg?crop=0.598xw:0.505xh;0.120xw,0.332xh&resize=2048:*',
+                    price: 'Starting at $37,700'
+                },
+                {
+                    name: 'Volvo S90',
+                    brand: 'Volvo',
+                    description: 'Scandinavian design and safety',
+                    image: 'https://www.v3cars.com/media/model-imgs/1625555693-Volvo-S90.jpg',
+                    price: 'Starting at $51,850'
+                },
+                {
+                    name: 'Lexus ES',
+                    brand: 'Lexus',
+                    description: 'Comfortable and reliable luxury sedan',
+                    image: 'https://scene7.toyota.eu/is/image/toyotaeurope/2024-lexus-es-gallery-exterior-3-1920x1080-100924?wid=1280&fit=fit,1&ts=0&resMode=sharp2&op_usm=1.75,0.3,2,0',
+                    price: 'Starting at $40,950'
+                },
+                {
+                    name: 'Cadillac CT5',
+                    brand: 'Cadillac',
+                    description: 'American luxury with sporty handling',
+                    image: 'https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/NdF2qrCvgUO0hnGPwpZBgGFx7oAipfAV8Yhh9pu7.jpg',
+                    price: 'Starting at $37,295'
+                }
+            ]
+        };
+
+        // Update the HTML structure to match the new categories
+        function updateHTML() {
+            const categoriesSection = document.querySelector('#categories');
+            categoriesSection.innerHTML = `
+                <h2>Our Collections</h2>
+                
+                <!-- Luxury Sedans -->
+                <div class="category">
+                    <h3>Luxury Sedans</h3>
+                    <div class="car-grid" id="luxurySedan"></div>
+                </div>
+
+                <!-- Luxury SUVs -->
+                <div class="category">
+                    <h3>Luxury SUVs</h3>
+                    <div class="car-grid" id="luxurySUV"></div>
+                </div>
+
+                <!-- Luxury Sports Cars -->
+                <div class="category">
+                    <h3>Luxury Sports Cars</h3>
+                    <div class="car-grid" id="luxurySports"></div>
+                </div>
+
+                <!-- Luxury EVs -->
+                <div class="category">
+                    <h3>Luxury Electric Vehicles</h3>
+                    <div class="car-grid" id="luxuryEV"></div>
+                </div>
+
+                <!-- Ultra Luxury -->
+                <div class="category">
+                    <h3>Ultra-Luxury Cars</h3>
+                    <div class="car-grid" id="ultraLuxury"></div>
+                </div>
+            `;
+        }
+
+        // Enhanced car card creation
+        function createCarCard(car) {
+            return `
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="${car.image}" alt="${car.name}">
+                        <div class="car-overlay">
+                            <button class="details-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="car-card-content">
+                        <h4>${car.name}</h4>
+                        <p class="car-brand">${car.brand}</p>
+                        <p class="car-description">${car.description}</p>
+                        <p class="car-price">${car.price}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Populate car grids
+        function populateCarGrids() {
+            Object.keys(carData).forEach(category => {
+                const grid = document.getElementById(category);
+                if (grid) {
+                    grid.innerHTML = carData[category].map(car => createCarCard(car)).join('');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateHTML();
+            populateCarGrids();
+            setupMobileMenu();
+            setupParticles();
+            populateBrandSelect();
+        });
+
+        // Mobile menu
+        function setupMobileMenu() {
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuBtn.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+
+        // Particle effect
+        function setupParticles() {
+            const particles = document.querySelector('.particles');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Populate brand select in contact form
+        function populateBrandSelect() {
+            const select = document.querySelector('.contact-form select');
+            const brands = new Set();
+            
+            Object.values(carData).forEach(category => {
+                category.forEach(car => brands.add(car.brand));
+            });
+            
+            brands.forEach(brand => {
+                const option = document.createElement('option');
+                option.value = brand.toLowerCase();
+                option.textContent = brand;
+                select.appendChild(option);
+            });
+        }
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your inquiry. We will contact you soon!');
+            this.reset();
+        });
+
+        // Newsletter subscription
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your newsletter subscription logic here
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
