@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fashion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2, #ff6a88);
+            min-height: 100vh;
+            color: #1f2933;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #ff512f, #f09819);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* PAGE TITLE */
+        .page-title {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #fff;
+        }
+
+        .page-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            font-size: 18px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product {
+            background: linear-gradient(135deg, #ffffff, #f3f4f6);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            color: #4b5563;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .product button {
+            background: linear-gradient(90deg, #36d1dc, #5b86e5);
+            border: none;
+            padding: 10px 22px;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            opacity: 0.9;
+        }
+
+        /* BACK BUTTON */
+        .back-home {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 60px;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            color: #fff;
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-home:hover {
+            opacity: 0.9;
+        }
+
+        /* CART MESSAGE */
+        .cart-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(90deg, #36d1dc, #5b86e5);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+            z-index: 2000;
+        }
+
+        .cart-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
+        .buy-btn {
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    border: none;
+    padding: 10px 22px;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.buy-btn:hover {
+    opacity: 0.9;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MyShop</h1>
+    <a href="ecommerce.html">⬅ Back to Home</a>
+</header>
+
+<section class="page-title">
+    <h2>Fashion Collection</h2>
+    <p>Trendy styles for men & women</p>
+</section>
+
+<section class="products">
+    <div class="product">
+        <img src="F:\project\img\cshirt.jpeg" alt="Men Casual Shirt">
+        <h3>Men Casual Shirt</h3>
+        <p>₹999</p>
+        <button onclick="addToCart('Men Casual Shirt', 999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Men Casual Shirt', 999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\gdress.jpeg" alt="Women Summer Dres">
+        <h3>Women Summer Dress</h3>
+        <p>₹699</p>
+        <button onclick="addToCart('Women Summer Dress', 699)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Women Summer Dress', 699)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\kidshirt.webp" alt="Kids Cotton T-Shirt">
+        <h3>Kids Cotton T-Shirt</h3>
+        <p>₹299</p>
+        <button onclick="addToCart('Kids Cotton T-Shirt', 299)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Kids Cotton T-Shirt', 299)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\jeansm.jpeg" alt="Men Denim Jeans">
+        <h3>Men Denim Jeans</h3>
+        <p>₹1299</p>
+        <button onclick="addToCart('Men Denim Jeans', 1299)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Men Denim Jeans', 1299)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\kurti.webp" alt="Women Ethnic Kurti">
+        <h3>Women Ethnic Kurti</h3>
+        <p>₹599</p>
+        <button onclick="addToCart('Women Ethnic Kurti', 599)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Women Ethnic Kurti', 599)" class="buy-btn">Buy Now</button>
+    </div>
+
+
+    <div class="product">
+        <img src="F:\project\img\pant.jpeg" alt="Men Formal Trousers">
+        <h3>Men Formal Trousers</h3>
+        <p>₹1299</p>
+        <button onclick="addToCart('Men Formal Trousers', 1299)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Men Formal Trousers',1299)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\saree.webp" alt="Women Saree">
+        
+        
+        <h3>Women Saree</h3>
+        <p>₹1999</p>
+        <button onclick="addToCart('Women Saree', 1999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Women Saree', 1999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\hoodie.webp" alt="Men Hooded Sweatshirt">
+        <h3>Men Hooded Sweatshirt</h3>
+        <p>₹1299</p>
+        <button onclick="addToCart('Men Hooded Sweatshirt', 1299)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Men Hooded Sweatshirt', 1299)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\bag.webp" alt="Women Handbag">
+        <h3>Women Handbag</h3>
+        <p>₹1499</p>
+        <button onclick="addToCart('Women Handbag', 1499)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Women Handbag', 1499)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\shoes.webp" alt="Men Sports Shoes">
+     
+
+        <h3>Men Sports Shoes</h3>
+        <p>₹1999</p>
+        <button onclick="addToCart('Men Sports Shoes', 1999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Men Sports Shoes', 1999)" class="buy-btn">Buy Now</button>
+    </div>
+
+
+
+
+    <div class="product">
+        <img src="F:\project\img\heel.webp" alt="Women Heels">
+       
+        <h3>Women Heels</h3>
+        <p>₹599</p>
+        <button onclick="addToCart('Women Heels', 599)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Women Heels', 599)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\dress.webp" alt="Kids Party Wear Dress">
+        <h3>Kids Party Wear Dress</h3>
+        <p>₹2999</p>
+        <button onclick="addToCart('Kids Party Wear Dress', 2999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Kids Party Wear Dress', 2999)" class="buy-btn">Buy Now</button>
+    </div>
+
+<div class="product">
+        <img src="F:\project\img\jac.jpeg" alt="Men Winter Jacket">
+        <h3>Men Winter JacketV</h3>
+        <p>₹1299</p>
+        <button onclick="addToCart('Men Winter Jacket', 1299)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Men Winter Jacket', 1299)" class="buy-btn">Buy Now</button>
+    </div>
+
+   <div class="product">
+        <img src="F:\project\img\dup.webp" alt="Women Dupatta">
+        <h3>Women Dupattas</h3>
+        <p>₹1499</p>
+        <button onclick="addToCart('Women Dupatta', 1499)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Women Dupatta', 1499)" class="buy-btn">Buy Now</button>
+    </div>
+
+       <div class="product">
+        <img src="F:\project\img\glass.jpeg" alt="Women Sunglasses">
+        <h3>Women Sunglasses</h3>
+        <p>₹599</p>
+        <button onclick="addToCart('Women Sunglasses', 599)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Women Sunglasses', 599)" class="buy-btn">Buy Now</button>
+    </div>
+</section>
+
+
+
+
+
+<a href="ecommerce.html" class="back-home">⬅ Back to Home</a>
+
+<!-- ADD TO CART MESSAGE -->
+<div id="cartMessage" class="cart-message">
+    Item added to cart ✅
+</div>
+
+<script>
+// ADD PRODUCT TO CART
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showCartMessage(name);
+}
+
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(p => p.name === name);
+
+    if (item) {
+        item.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showCartMessage(name);
+}
+
+// BUY NOW FUNCTION
+function buyNow(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(p => p.name === name);
+
+    if (item) {
+        item.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Redirect to cart page
+    window.location.href = "cart.html";
+}
+
+// CART MESSAGE
+function showCartMessage(productName) {
+    const msg = document.getElementById("cartMessage");
+    msg.innerText = `✅ ${productName} added to cart`;
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        msg.classList.remove("show");
+    }, 2000);
+}
+
+
+// SHOW MESSAGE
+function showCartMessage(productName) {
+    const msg = document.getElementById("cartMessage");
+    msg.innerText = `✅ ${productName} added to cart`;
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        msg.classList.remove("show");
+    }, 2000);
+}
+
+
+
+
+function buyNow(productName, price) {
+    // Redirect to order page and pass product name
+    window.location.href = "order.html?product=" + encodeURIComponent(productName);
+}
+
+</script>
+
+</body>
+</html>

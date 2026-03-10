@@ -1,0 +1,555 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful E‑Commerce</title>
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2, #ff6a88);
+            min-height: 100vh;
+            color: #1f2933;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #ff512f, #f09819);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 80px 40px;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            border: none;
+            padding: 14px 30px;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            opacity: 0.9;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product {
+            background: linear-gradient(135deg, #ffffff, #f3f4f6);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            color: #4b5563;
+            margin-bottom: 15px;
+        }
+
+        .product button {
+            background: linear-gradient(90deg, #36d1dc, #5b86e5);
+            border: none;
+            padding: 10px 22px;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(90deg, #232526, #414345);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+
+
+        .cart-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    height: 100%;
+    background:  linear-gradient(to right, #22d3ee, #6366f1);
+    color: #000;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.cart-panel.open {
+    right: 0;
+}
+
+.cart-panel h2 {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #ddd;   <!-- Cart line -->
+    padding-bottom: 8px;
+}
+
+.cart-item button {
+    background: red;
+    border: none;
+    color: #fff;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+
+
+.cart-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(90deg, #36d1dc, #5b86e5);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(20px);
+    z-index: 2000;
+}
+
+.cart-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* CATEGORY SECTION */
+.categories {
+    padding: 60px 40px;
+    text-align: center;
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+}
+
+.categories h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #111827;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.category-card {
+    background: linear-gradient(135deg, #22d3ee, #6366f1);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+
+.category-card {
+    text-decoration: none;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MyShop</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#categories">Category</a>
+        <a href="#" onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Discover Colorful Deals</h2>
+    <p>Modern products with vibrant design and great prices</p>
+    <button>Shop Now</button>
+</section>
+
+<!-- CATEGORY SECTION -->
+<section id="categories" class="categories">
+    <h2>Shop by Category</h2>
+
+    <div class="category-list">
+
+        <a href="electronics.html" class="category-card">
+            <h3>📺 Electronics</h3>
+        </a>
+
+        <a href="fashion.html" class="category-card">
+            <h3>👗 Fashion</h3>
+        </a>
+
+        <a href="mobile.html" class="category-card">
+            <h3>📱 Mobiles</h3>
+        </a>
+
+        <a href="home.html" class="category-card">
+            <h3>🏠 Home</h3>
+        </a>
+
+    </div>
+</section>
+
+
+<section class="products">
+    <div class="product">
+        <img src="F:\project\img\cshirt.jpeg" alt="Men Casual Shirt">
+        <h3>Men Casual Shirt</h3>
+        <p>₹999</p>
+        <button onclick="addToCart('Men Casual Shirt', 999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Men Casual Shirt', 999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\gdress.jpeg" alt="Women Summer Dres">
+        <h3>Women Summer Dress</h3>
+        <p>₹699</p>
+        <button onclick="addToCart('Women Summer Dress', 699)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Women Summer Dress', 699)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\kidshirt.webp" alt="Kids Cotton T-Shirt">
+        <h3>Kids Cotton T-Shirt</h3>
+        <p>₹299</p>
+        <button onclick="addToCart('Kids Cotton T-Shirt', 299)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Kids Cotton T-Shirt', 299)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\jeansm.jpeg" alt="Men Denim Jeans">
+        <h3>Men Denim Jeans</h3>
+        <p>₹1299</p>
+        <button onclick="addToCart('Men Denim Jeans', 1299)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Men Denim Jeans', 1299)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\icp.png" alt="Iphone 17 Pro Max">
+        <h3>Iphone 17 Pro Max</h3>
+        <p>₹1,69,900</p>
+        <button onclick="addToCart('Iphone 17 Pro Max', 169900)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Iphone 17 Pro Max', 169900)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\bci.webp" alt="Iphone back cover">
+        <h3>Iphone back cover</h3>
+        <p>₹1999</p>
+        <button onclick="addToCart('Iphone back cover', 1999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Iphone back cover', 1999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\charger.jpeg" alt="Fast Charging Adapter">
+        <h3>Fast Charging Adapter</h3>
+        <p>₹799</p>
+        <button onclick="addToCart('Fast Charging Adapter', 799)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Fast Charging Adapter', 799)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\buds.jpeg" alt="Wireless Earbuds">
+        <h3>Wireless Earbuds</h3>
+        <p>₹1599</p>
+        <button onclick="addToCart('Wireless Earbuds', 1599)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Wireless Earbuds', 1599)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\Lap.jpeg" alt="Laptop">
+        <br>
+        <br>
+        <h3>Laptop</h3>
+        <p>₹47,999</p>
+        <br>
+        <button onclick="addToCart('Laptop', 47999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Laptop', 47999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\headphone.webp" alt="Bluetooth Headphones">
+        <h3>Bluetooth Headphones</h3>
+        <p>₹999</p>
+        <button onclick="addToCart('Bluetooth Headphones', 2999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Bluetooth Headphones', 2999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\tv.webp" alt="Smart LED TV">
+        <h3>Smart LED TV</h3>
+        <p>₹45,999</p>
+        <button onclick="addToCart('Smart LED TV', 45999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Smart LED TV', 45999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\table.avif" alt="Dining Table">
+        <h3>Dining Table</h3>
+        <p>₹22,999</p>
+        <button onclick="addToCart('Dining Table', 22999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Dining Table', 22999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\polar.jpeg" alt="Kitchen Mixer Grinder">
+        <br>
+        
+        <h3>Kitchen Mixer Grinder</h3>
+        <p>₹7999</p>
+        <button onclick="addToCart('Kitchen Mixer Grinder', 7999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Kitchen Mixer Grinder', 7999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\wall.webp" alt="Home Wall Decor">
+        <h3>Home Wall Decor</h3>
+        <p>₹5999</p>
+        <button onclick="addToCart('Home Wall Decor', 5999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Home Wall Decor', 5999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\sofa.webp" alt="">
+        <h3>Sofa Set</h3>
+        <p>₹49,999</p>
+        <button onclick="addToCart('Sofa Set', 49999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Sofa Set', 49999)" class="buy-btn">Buy Now</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 MyShop. All rights reserved.</p>
+</footer>
+
+
+<!-- CART PANEL -->
+<div id="cartPanel" class="cart-panel">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <button onclick="toggleCart()">Close</button>
+</div>
+ 
+
+
+<script>
+updateCartCount();
+
+function toggleCart() {
+    document.getElementById("cartPanel").classList.toggle("open");
+    renderCart();
+}
+
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(p => p.name === name);
+
+    if (item) {
+        item.qty++;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    showCartMessage(name);
+}
+
+
+
+
+function showCartMessage(productName) {
+    const msg = document.getElementById("cartMessage");
+    msg.innerText = `✅ ${productName} added to cart`;
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        msg.classList.remove("show");
+    }, 2000);
+}
+
+function removeFromCart(name) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart = cart.filter(item => item.name !== name);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+    updateCartCount();
+}
+
+
+function renderCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = "<p>Your cart is empty</p>";
+        return;
+    }
+
+    cart.forEach(item => {
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <div>
+                    <strong>Product:</strong> ${item.name}<br>
+                    <strong>Price:</strong> ₹${item.price}<br>
+                    <strong>Quantity:</strong> ${item.qty}
+                    <strong>Total:</strong> ₹${item.price * item.qty}
+
+                </div>
+                <button onclick="removeFromCart('${item.name}')">❌</button>
+            </div>
+        `;
+    });
+}
+
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let count = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById("cartCount").innerText = count;
+}
+
+
+
+
+function buyNow(productName, price) {
+    // Redirect to order page and pass product name
+    window.location.href = "order.html?product=" + encodeURIComponent(productName);
+}
+
+
+</script>
+ 
+
+<!-- ADD TO CART MESSAGE -->
+<div id="cartMessage" class="cart-message">
+    Item added to cart ✅
+</div>
+
+</body>
+</html>

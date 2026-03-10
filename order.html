@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Now</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top, #0f172a, #020617);
+            color: #e5e7eb;
+        }
+
+        .order-container {
+            width: 420px;
+            padding: 35px;
+            border-radius: 18px;
+            background: linear-gradient(
+                145deg,
+                rgba(99,102,241,0.15),
+                rgba(34,211,238,0.12)
+            );
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(99,102,241,0.35);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+
+        .order-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            background: linear-gradient(to right, #818cf8, #22d3ee);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            font-size: 13px;
+            color: #c7d2fe;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: rgba(2, 6, 23, 0.8);
+            color: #e5e7eb;
+            font-size: 14px;
+            border: 1px solid rgba(99,102,241,0.25);
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: #22d3ee;
+            box-shadow: 0 0 0 2px rgba(34,211,238,0.2);
+        }
+
+        .order-btn {
+            margin-top: 10px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            background: linear-gradient(to right, #22d3ee, #6366f1);
+            color: #020617;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(99,102,241,0.7);
+        }
+    </style>
+</head>
+<body>
+
+<div class="order-container">
+    <h2>Place Your Order</h2>
+
+    <form action="save_order.php" method="POST">
+
+        <div class="field">
+            <label> Name</label>
+            <input type="text" name="user_name" required>
+        </div>
+
+        <div class="field">
+            <label> Address</label>
+            <input type="text" name="user_address" required>
+        </div>
+
+        <div class="field">
+            <label>Phone Number</label>
+            <input type="text" name="phone_no" required>
+        </div>
+
+        <div class="field">
+            <label>Product Name</label>
+            <input type="text" name="product_name" required>
+        </div>
+
+        <div class="field">
+            <label>Payment Type</label>
+            <select name="payment_type" required>
+                <option value="">Select Payment</option>
+                <option value="COD">Cash on Delivery</option>
+                <option value="UPI">UPI</option>
+                <option value="Card">Debit / Credit Card</option>
+            </select>
+        </div>
+
+        <button class="order-btn" type="submit">Confirm Order</button>
+        
+
+    </form>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // stop form submission
+            alert("✅ Order Confirmed Successfully!");
+        });
+    });
+</script>
+
+
+
+
+
+</body>
+</html>

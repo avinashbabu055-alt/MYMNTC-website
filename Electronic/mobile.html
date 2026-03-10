@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobiles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2, #ff6a88);
+            min-height: 100vh;
+            color: #1f2933;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #ff512f, #f09819);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* PAGE TITLE */
+        .page-title {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #fff;
+        }
+
+        .page-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            font-size: 18px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product {
+            background: linear-gradient(135deg, #ffffff, #f3f4f6);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            color: #4b5563;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .product button {
+            background: linear-gradient(90deg, #36d1dc, #5b86e5);
+            border: none;
+            padding: 10px 22px;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            opacity: 0.9;
+        }
+
+        /* BACK BUTTON */
+        .back-home {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 60px;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            color: #fff;
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-home:hover {
+            opacity: 0.9;
+        }
+
+        /* CART MESSAGE */
+        .cart-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(90deg, #36d1dc, #5b86e5);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+            z-index: 2000;
+        }
+
+        .cart-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        .buy-btn {
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    border: none;
+    padding: 10px 22px;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.buy-btn:hover {
+    opacity: 0.9;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MyShop</h1>
+    <a href="ecommerce.html">⬅ Back to Home</a>
+</header>
+
+<section class="page-title">
+    <h2>Mobile Phones</h2>
+    <p>Latest smartphones at best prices</p>
+</section>
+
+
+<section class="products">
+    <div class="product">
+        <img src="F:\project\img\i15.webp" alt="Apple iPhone 15 Max">
+        <h3>Apple iPhone 15 Max</h3>
+        <p>₹79,999</p>
+        <button onclick="addToCart('Apple iPhone 15 Max', 79999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Apple iPhone 15 Max', 79999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\s23.webp" alt="Samsung Galaxy S23 Ultra">
+        <h3>Samsung Galaxy S23 Ultra</h3>
+        <p>₹64,999</p>
+        <button onclick="addToCart('Samsung Galaxy S23 Ultra', 64999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Samsung Galaxy S23 Ultra', 64999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\one11.jpeg" alt="OnePlus 11">
+        <h3>OnePlus 11</h3>
+        <p>₹69,999</p>
+        <button onclick="addToCart('OnePlus 11', 69999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('OnePlus 11', 69999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\redmi13.jpeg" alt="Xiaomi Redmi Note 13 Pro">
+        <h3>Xiaomi Redmi Note 13 Pro</h3>
+        <p>₹20,999</p>
+        <button onclick="addToCart('Xiaomi Redmi Note 13 Pro', 20999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Xiaomi Redmi Note 13 Pro', 20999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\gt.webp" alt="Realme GT Neo 3">
+        <h3>Realme GT Neo 3</h3>
+        <p>₹19,999</p>
+        <button onclick="addToCart('Realme GT Neo 3',19999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Realme GT Neo 3', 19999)" class="buy-btn">Buy Now</button>
+    </div>
+
+
+    <div class="product">
+        <img src="F:\project\img\v29.webp" alt="Vivo V29">
+        <h3>Vivo V29</h3>
+        <p>₹32,999</p>
+        <button onclick="addToCart('Vivo V29', 32999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Vivo V29',32999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\reno.webp" alt="Oppo Reno 10">
+        
+        
+        <h3>Oppo Reno 10</h3>
+        <p>₹24,999</p>
+        <button onclick="addToCart('Oppo Reno 10', 24999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Oppo Reno 10', 24999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\g8.webp" alt="Google Pixel 8 Pro">
+        <h3>Google Pixel 8 Pro</h3>
+        <p>34,999</p>
+        <button onclick="addToCart('Google Pixel 8 Pro',34999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Google Pixel 8 Pro',34999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\m50.webp" alt="Motorola Edge 50 fusion">
+        <h3>Motorola Edge 50 fusion</h3>
+        <p>₹20,999</p>
+        <button onclick="addToCartMotorola Edge 50 fusion', 20999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNowMotorola Edge 50 fusion', 20999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\n2.png" alt="Nothing Phone (2)">
+     
+
+        <h3>Nothing Phone (2)</h3>
+        <p>₹29,999</p>
+        <button onclick="addToCart('Nothing Phone (2)', 29999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Nothing Phone (2)', 29999)" class="buy-btn">Buy Now</button>
+    </div>
+
+
+
+
+    <div class="product">
+        <img src="F:\project\img\iq7.webp" alt="iQOO Neo 7">
+       
+        <h3>iQOO Neo 7</h3>
+        <p>₹35,999</p>
+        <button onclick="addToCart('iQOO Neo 7', 35999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('iQOO Neo 7', 35999)" class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="F:\project\img\rog.webp" alt="Asus ROG Phone 7">
+        <h3>Asus ROG Phone 7</h3>
+        <p>₹1,22,999</p>
+        <button onclick="addToCart('Asus ROG Phone 7', 122999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Asus ROG Phone 7', 122999)" class="buy-btn">Buy Now</button>
+    </div>
+
+<div class="product">
+        <img src="F:\project\img\sony.avif" alt="Sony Xperia 5 V">
+        <h3>Sony Xperia 5 V</h3>
+        <p>₹19,999</p>
+        <button onclick="addToCart('Sony Xperia 5 V', 19999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Sony Xperia 5 Vt', 19999)" class="buy-btn">Buy Now</button>
+    </div>
+
+   <div class="product">
+        <img src="F:\project\img\nokia.jpeg" alt="Nokia G42">
+        <h3>Nokia G42</h3>
+        <p>₹27,999</p>
+        <button onclick="addToCart('Nokia G42', 27999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Nokia G42', 27999)" class="buy-btn">Buy Now</button>
+    </div>
+
+       <div class="product">
+        <img src="F:\project\img\in30.webp" alt="Infinix Zero 30">
+        <h3>Infinix Zero 30</h3>
+        <p>₹19,999</p>
+        <button onclick="addToCart('Infinix Zero 30', 19999)">Add to Cart</button>
+        <br><br>
+<button onclick="buyNow('Infinix Zero 30', 19999)" class="buy-btn">Buy Now</button>
+    </div>
+</section>
+
+<a href="ecommerce.html" class="back-home">⬅ Back to Home</a>
+
+<!-- ADD TO CART MESSAGE -->
+<div id="cartMessage" class="cart-message">
+    Item added to cart ✅
+</div>
+
+<script>
+// ADD PRODUCT TO CART
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showCartMessage(name);
+}
+
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(p => p.name === name);
+
+    if (item) {
+        item.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showCartMessage(name);
+}
+
+// BUY NOW FUNCTION
+function buyNow(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(p => p.name === name);
+
+    if (item) {
+        item.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Redirect to cart page
+    window.location.href = "cart.html";
+}
+
+// CART MESSAGE
+function showCartMessage(productName) {
+    const msg = document.getElementById("cartMessage");
+    msg.innerText = `✅ ${productName} added to cart`;
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        msg.classList.remove("show");
+    }, 2000);
+}
+
+
+// SHOW MESSAGE
+function showCartMessage(productName) {
+    const msg = document.getElementById("cartMessage");
+    msg.innerText = `✅ ${productName} added to cart`;
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        msg.classList.remove("show");
+    }, 2000);
+}
+
+
+function buyNow(productName, price) {
+    // Redirect to order page and pass product name
+    window.location.href = "order.html?product=" + encodeURIComponent(productName);
+}
+
+
+</script>
+
+</body>
+</html>

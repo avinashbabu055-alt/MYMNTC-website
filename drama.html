@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVortex</title>
+    <style>
+        /* Add the MNTC name tag styling */
+        .mntc-tag {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Rest of your existing styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: auto;
+            background: linear-gradient(270deg, #ff7e5f, #feb47b, #00c6ff, #00f99f);
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 300px 300px;
+            animation: gradientAnimation 5s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6347;
+            transform: scale(1.1);
+        }
+
+        .category {
+            width: 80%;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            color: black;
+            margin: 20px 0;
+        }
+
+        .category h3 {
+            color: white;
+        }
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .movie {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .movie img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .movie h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .movie p {
+            font-size: 0.9em;
+        }
+
+        .movie:hover {
+            transform: scale(1.1);
+        }
+
+        .movie button {
+            background: linear-gradient(135deg, #330867, #30cfd0);
+            border: none;
+            padding: 10px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .movie button:hover {
+            background-color: #ff4500;
+            transform: scale(1.1);
+            animation: buttonAnim 3s;
+        }
+
+        @keyframes buttonAnim {
+            0% { background-color: #ff6347; }
+            50% { background-color: #ff4500; }
+            100% { background-color: #ff6347; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add event listeners or other interactive features here
+        });
+    </script>
+</head>
+<body>
+    <!-- MNTC Name Tag -->
+    <div class="mntc-tag">MNTC</div>
+
+    <div class="animated-background">
+        <div class="background"></div>
+        <div class="content">
+            <h1>WELCOME TO MNTC MOVIES HUB</h1>
+            <nav>
+                <ul>
+                    <li><a href="file:///C:/Users/malla/Desktop/MNTC%20PROJECT/movie%20home.html">Home</a></li>
+         
+                </ul>
+            </nav>
+
+            <!-- Action Category -->
+            <div id="action" class="category">
+                <h2>DRAMA MOVIES PAGE</h2>
+                <div class="movie-list">
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTYsJBXkuugol7UDOKwzJ4kl2BA2YvuU1XGlH_9PHmTMAN2XMkwO1q-XrDhB5YHn3_CYVGCvg">
+                        <h3>game changer</h3>
+                        <button><a href="https://hubdrive.fit/file/2518467346">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://m.media-amazon.com/images/S/pv-target-images/f0656ebcf1c4e7636e3b6c2650e5ac3a3992aed0dceb1da2a7202fada718a1e4.jpg">
+                        <h3>driving licence</h3>
+                        <button><a href="https://hubdrive.fit/file/2595093613">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://m.media-amazon.com/images/M/MV5BZmY2MTQ2YjAtMzQyNy00NTc4LWE2OGMtMTYzMWJkYTlmZTNmXkEyXkFqcGc@._V1_QL75_UY133_CR8,0,90,133_.jpg">
+                        <h3>majhail</h3>
+                        <button><a href="https://hubdrive.fit/file/1929913351">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpuKgPSkYe8rnPj176C5PJrmXHEqaqCWfwX1lACZgkPoa9kHqpYvsSpkFozbDYSt7uCA&usqp=CAU">
+                        <h3>sulthan</h3>
+                        <button><a href="https://hubdrive.fit/file/2998184559">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://image.tmdb.org/t/p/original/zx3UOe5rZ7uH5lMs3JxEMU0nNXB.jpg">
+                        <h3>agni</h3>
+                        <button><a href="https://hubdrive.fit/file/2110050231">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://image.tmdb.org/t/p/original/sJOfJuyQVZPwNQ8g21Qv0lojQhC.jpg">
+                        <h3>major</h3>
+                        <button><a href="https://hubdrive.fit/file/2346474123">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://static.toiimg.com/thumb/imgsize-23456,msid-90103314,width-600,resizemode-4/90103314.jpg">
+                        <h3>radhe shyam</h3>
+                        <button><a href="https://hubdrive.fit/file/1758133403">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://www.acmodasi.in/amdb/images/movie/8/1/12th-fail-2023-XW2dY0.jpg">
+                        <h3>12th fail</h3>
+                        <button><a href="https://hubdrive.fit/file/1703820174">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://assets.gadgets360cdn.com/pricee/assets/product/202307/The-diplomat_1688473343.jpg">
+                        <h3> the diplomat</h3>
+                        <button><a href="https://hubdrive.fit/file/1785992007">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://static.toiimg.com/photo/116685645.cms">
+                        <h3>legally veer</h3>
+                        <button><a href="https://hubdrive.fit/file/1982410658">Download</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+       <p>Contact Us: avinashbabu055@gmail.com</p>
+        <p>Contact Us: abhaypawar2616@gmail.com</p>
+    </footer>
+</body>
+</html>

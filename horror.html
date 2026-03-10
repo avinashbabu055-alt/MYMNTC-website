@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineVortex</title>
+    <style>
+        /* Add the MNTC name tag styling */
+        .mntc-tag {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Rest of your existing styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: auto;
+            background: linear-gradient(270deg, #ff7e5f, #feb47b, #00c6ff, #00f99f);
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 300px 300px;
+            animation: gradientAnimation 5s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6347;
+            transform: scale(1.1);
+        }
+
+        .category {
+            width: 80%;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            color: black;
+            margin: 20px 0;
+        }
+
+        .category h3 {
+            color: white;
+        }
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .movie {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .movie img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .movie h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .movie p {
+            font-size: 0.9em;
+        }
+
+        .movie:hover {
+            transform: scale(1.1);
+        }
+
+        .movie button {
+            background: linear-gradient(135deg, #330867, #30cfd0);
+            border: none;
+            padding: 10px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .movie button:hover {
+            background-color: #ff4500;
+            transform: scale(1.1);
+            animation: buttonAnim 3s;
+        }
+
+        @keyframes buttonAnim {
+            0% { background-color: #ff6347; }
+            50% { background-color: #ff4500; }
+            100% { background-color: #ff6347; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add event listeners or other interactive features here
+        });
+    </script>
+</head>
+<body>
+    <!-- MNTC Name Tag -->
+    <div class="mntc-tag">MNTC</div>
+
+    <div class="animated-background">
+        <div class="background"></div>
+        <div class="content">
+            <h1>WELCOME TO MNTC MOVIES HUB</h1>
+            <nav>
+                <ul>
+                    <li><a href="file:///C:/Users/malla/Desktop/MNTC%20PROJECT/movie%20home.html">Home</a></li>
+                  
+                </ul>
+            </nav>
+
+            <!-- Action Category -->
+            <div id="action" class="category">
+                <h2>HORROR MOVIES PAGE</h2>
+                <div class="movie-list">
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcROqmrMVzOXm78bp2aJec_ZFj5qXEnRLZAiCFXTxygy7w_f1d-k2GJ0kwuqhRVxIUkut4vSJQ">
+                        <h3>alien</h3>
+                        <button><ahref="https://hubdrive.fit/file/2322967655">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM80rW1WI9XwnKfJuLCf8YlLwbQSvavcGPTbNNFY0MfZWPrOg8LMTce7Ml6zAPxIqbPTff">
+                        <h3>jaws</h3>
+                        <button><a href="https://hubdrive.fit/file/1698843671">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQeqClg9WkzGhd4gNWXa-gJGeZS_2HkNNclIzPhy66CKBnamMAY0TcbQZmWTuD4otPUjmtlFA">
+                        <h3>the conjuring</h3>
+                        <button><a href="https://hubdrive.fit/file/3447750476">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://resizing.flixster.com/P1-AuuHkVEGt-tWIgSwohr_2-h8=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzVkNjBmMjY4LTI4ZmItNDZmNC05NGIwLWUxZTkxZmUyZjlkOC5qcGc=">
+                        <h3>bedevilled</h3>
+                        <button><a href="https://hubdrive.fit/file/2821106023">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOaErTWqxvtxDNmWc17jco7MmpnU6JV2iGhDi-Vt57NoCVg0gWt6rolqGwlPHgyCPuEDS">
+                        <h3>in a violent nature</h3>
+                        <button><a href="https://hubdrive.fit/file/2132593780">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/aghathiyaa-et00418623-1740392959.jpg">
+                        <h3>aghathiyaa</h3>
+                        <button><a href="https://hubdrive.fit/file/2367231663">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSd7BHW2tpro-CZj6tbkTzWBVESmkroBUz8xA8fB1OOFc_ha7TYRrOMCbi6OJC2oe8VqyKB">
+                        <h3>nosferatu</h3>
+                        <button><a href="https://hubdrive.fit/file/3033819272">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtrE0MWINJuD6YHHLFZO4-ZoJE9QfLH_r5bw&s">
+                        <h3>wolf man</h3>
+                        <button><a href="https://hubdrive.fit/file/2294494546">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://resizing.flixster.com/0KrXlb3r032-sxihrsMztYISGUc=/206x305/v2/https://resizing.flixster.com/5hpme7DPV6YVFszt5byKcI_ybQg=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzYxNmNiZDdmLWNhMWQtNDA5OS1hZTI2LTI3NTJhZjhlNzgzNy5qcGc=">
+                        <h3>the goldsmith</h3>
+                        <button><a href="https://hubdrive.fit/file/1894006810">Download</button>
+                    </div>
+                    <div class="movie">
+                        <img border="5" height="200" width="200" src="https://upload.wikimedia.org/wikipedia/en/a/ad/Gogl_origins.jpg">
+                        <h3>Gogol. The Beginning</h3>
+                        <button><a href="https://hubdrive.fit/file/1844641456">Download</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+      <p>Contact Us: avinashbabu055@gmail.com</p>
+        <p>Contact Us: abhaypawar2616@gmail.com</p>
+    </footer>
+</body>
+</html>
